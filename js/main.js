@@ -1,3 +1,5 @@
+//carousel
+
 const swiper = new Swiper('.swiper', {
     // Optional parameters
     direction: 'horizontal',
@@ -27,6 +29,74 @@ const gallery = new Swiper('.gallery', {
     },
 });
 
+const milk = new Swiper('.milk',{
+    direction: 'horizontal',
+    loop: false,
+    centeredSlides: true,
+    spaceBetween: 19,
+
+    pagination: {
+        el: '.milk_pagination',
+        clickable: true,
+    },
+});
+const barista = new Swiper('.barista',{
+    direction: 'horizontal',
+    loop: false,
+    centeredSlides: true,
+    spaceBetween: 19,
+
+    pagination: {
+        el: '.barista_pagination',
+        clickable: true,
+    },
+});
+const drink = new Swiper('.drink',{
+    direction: 'horizontal',
+    loop: false,
+    centeredSlides: true,
+    spaceBetween: 19,
+
+    pagination: {
+        el: '.drink_pagination',
+        clickable: true,
+    },
+});
+const spoon = new Swiper('.spoon',{
+    direction: 'horizontal',
+    loop: false,
+    centeredSlides: true,
+    spaceBetween: 19,
+
+    pagination: {
+        el: '.spoon_pagination',
+        clickable: true,
+    },
+});
+const porridge = new Swiper('.porridge',{
+    direction: 'horizontal',
+    loop: false,
+    centeredSlides: true,
+    spaceBetween: 19,
+
+    pagination: {
+        el: '.porridge_pagination',
+        clickable: true,
+    },
+});
+const dessert = new Swiper('.dessert',{
+    direction: 'horizontal',
+    loop: false,
+    centeredSlides: true,
+    spaceBetween: 19,
+
+    pagination: {
+        el: '.dessert_pagination',
+        clickable: true,
+    },
+});
+
+
 let scroll = 0;
 $(window).on("scroll", function(){
     scroll = window.pageYOffset || (document.documentElement.clientHeight ? document.documentElement.scrollTop : document.body.scrollTop);
@@ -39,6 +109,7 @@ $(window).on("scroll", function(){
 });
 
 //parallax
+
 let bg = document.querySelector('.fruits');
 window.addEventListener('mousemove', function(e) {
     let x = e.clientX / window.innerWidth;
@@ -58,15 +129,17 @@ window.addEventListener('mousemove', function(e) {
     bg2.style.transform = 'translate(-' + x * 30 + 'px, -' + y * 5 + 'px)';
 });
 
+//header menu
+
 let count = -1;
 let count1 = -1;
 $(".popupMenu").mouseover(function (){
     if ($('.itemPassive').hasClass('itemActive')){
         $('.itemPassive').removeClass('itemActive')
-        $("header").css("background", "transparent")
+        $(".headerWrapper").css("background", "transparent")
     } else {
         $('.itemPassive').addClass('itemActive')
-        $("header").css("background", "#FFFFFF")
+        $(".headerWrapper").css("background", "#FFFFFF")
         if($('.aboutPassive').hasClass('aboutActive')){
             $('.aboutPassive').removeClass('aboutActive')
             $('.aboutPopup').addClass('closedAbout')
@@ -77,11 +150,11 @@ $(".aboutMenu").mouseover(function (){
     if ($('.aboutPassive').hasClass('aboutActive')){
         $('.aboutPassive').removeClass('aboutActive')
         $('.aboutPopup').addClass('closedAbout')
-        $("header").css("background", "transparent")
+        $(".headerWrapper").css("background", "transparent")
     } else {
         $('.aboutPassive').addClass('aboutActive')
         $('.aboutPopup').removeClass('closedAbout')
-        $("header").css("background", "#FFFFFF")
+        $(".headerWrapper").css("background", "#FFFFFF")
         if($('.itemPassive').hasClass('itemActive')){
             $('.itemPassive').removeClass('itemActive')
         }
@@ -92,11 +165,11 @@ $('main').mouseover(function (){
     if ($('.aboutPassive').hasClass('aboutActive')){
         $('.aboutPassive').removeClass('aboutActive')
         $('.aboutPopup').addClass('closedAbout')
-        $("header").css("background", "transparent")
+        // $(".headerWrapper").css("background", "transparent")
     }
     if($('.itemPassive').hasClass('itemActive')){
         $('.itemPassive').removeClass('itemActive')
-        $("header").css("background", "transparent")
+        // $(".headerWrapper").css("background", "transparent")
     }
 })
 
@@ -108,7 +181,7 @@ $('.itemEmpty').mouseover(function (){
     if($('.aboutPassive').hasClass('aboutActive')){
         $('.aboutPassive').removeClass('aboutActive')
         $('.aboutPopup').addClass('closedAbout')
-        $("header").css("background", "transparent")
+        $(".headerWrapper").css("background", "transparent")
     }
 })
 
@@ -154,6 +227,51 @@ $(".mobAboutProducts").on("click", function (){
         $(".mobAboutProducts").removeClass("openedItem")
     }
 })
+
+//filter
+
+$(".lineage").on("click", function (){
+    $(".lineage").removeClass('active');
+    $(".all-items").removeClass('active');
+    $(this).addClass('active');
+    let data = this.getAttribute('data-attribute');
+    $(".contentBlock").hide();
+    $("."+data).show();
+})
+
+$(".flavour").on("click", function (){
+    $(".flavour").removeClass('active');
+    $(this).addClass('active');
+    let data = this.getAttribute('data-attribute');
+    $(".contentItem").hide();
+    $("."+data).show();
+})
+
+$(".all-items").on("click", function (){
+    $(".item").removeClass('active');
+    $(this).addClass('active');
+    $(".contentBlock").show();
+    $(".contentItem").show();
+})
+
+//mob filter
+$('#line').change(function (){
+    let data = $(this).val();
+    $(".slider").hide();
+    $("."+data).show();
+    if(data == 'all-items'){
+        $(".slider").show();
+    }
+})
+$('#flavour').change(function (){
+    let data = $(this).val();
+    $(".swiper-slide").hide();
+    $("."+data).show();
+    if(data == 'all-flavours'){
+        $(".swiper-slide").show();
+    }
+})
+
 
 
 

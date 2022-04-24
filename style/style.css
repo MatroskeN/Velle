@@ -37,14 +37,13 @@ header {
   transform: translateX(-50%);
   transition: all 0.4s;
 }
-header:hover {
+header:hover .headerWrapper {
   background: #FFFFFF !important;
 }
 header .headerWrapper {
   display: flex;
   align-items: center;
   position: relative;
-  z-index: 2;
 }
 header .mWrapper {
   display: none;
@@ -89,7 +88,7 @@ header .headerMenu .item a .line {
 header .headerMenu .item svg {
   margin-left: 11px;
   cursor: pointer;
-  transition: 0.4s;
+  transition: 0.8s;
 }
 header .headerMenu .item .headerPopup {
   position: absolute;
@@ -99,8 +98,8 @@ header .headerMenu .item .headerPopup {
   height: 614px;
   background: #FFFFFF;
   transform: translateY(-200%);
-  transition: all 0.4s;
-  z-index: 1;
+  transition: all 0.8s;
+  z-index: -1;
 }
 header .headerMenu .item .headerPopup .content {
   display: flex;
@@ -117,11 +116,8 @@ header .headerMenu .item .headerPopup .content .item .itemPic {
   height: 222px;
   display: flex;
   align-items: flex-end;
-  position: absolute;
-  top: -100px;
-  left: 50%;
-  transform: translateX(-50%);
-  transition: all 0.4s;
+  transition: all 0.8s;
+  margin-bottom: 20px;
 }
 header .headerMenu .item .headerPopup .content .item .itemTitle {
   font-family: "PT Sans";
@@ -137,10 +133,6 @@ header .headerMenu .item .headerPopup .content .item .itemTitle {
   max-width: 162px;
   height: 36px;
   margin-bottom: 43px;
-  position: absolute;
-  top: -1000px;
-  left: 50%;
-  transform: translateX(-50%);
   transition: all 0.4s;
   margin-top: 10px;
 }
@@ -168,6 +160,7 @@ header .headerMenu .item .aboutPopup {
   padding: 25px 30px;
   background: #FFFFFF;
   transition: all 0.4s;
+  z-index: -1;
 }
 header .headerMenu .item .aboutPopup .itemAbout {
   margin-bottom: 30px;
@@ -179,7 +172,7 @@ header .headerMenu .item .closedAbout {
   transform: translateX(-40%) translateY(-1000px);
 }
 header .headerMenu .item:hover svg {
-  transform: rotateX(180deg);
+  transform: rotateZ(180deg);
 }
 header .headerMenu .item:hover .mainItem {
   color: #008425;
@@ -188,7 +181,7 @@ header .headerMenu .item:hover .mainItem .line {
   width: 100%;
 }
 header .headerMenu .aboutActive svg {
-  transform: rotateX(180deg);
+  transform: rotateZ(180deg);
 }
 header .headerMenu .aboutActive a {
   color: #008425;
@@ -197,7 +190,7 @@ header .headerMenu .aboutActive a .line {
   width: 100%;
 }
 header .headerMenu .itemActive svg {
-  transform: rotateX(180deg);
+  transform: rotateZ(180deg);
 }
 header .headerMenu .itemActive a {
   color: #008425;
@@ -905,7 +898,6 @@ main .wrapper .news .socials button:first-child {
 .mainWhere {
   position: relative;
   background: radial-gradient(53.65% 64.87% at 50% 35.13%, #F4F1EB 0%, #E8DFCD 100%);
-  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.25);
 }
 .mainWhere .box {
   position: absolute;
@@ -970,7 +962,6 @@ main .wrapper .news .socials button:first-child {
 
 .mainContacts {
   background: radial-gradient(53.65% 64.87% at 50% 35.13%, #F4F1EB 0%, #E8DFCD 100%);
-  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.25);
 }
 .mainContacts .contacts {
   width: 100%;
@@ -1083,6 +1074,147 @@ main .wrapper .news .socials button:first-child {
   font-size: 20px;
   line-height: 120%;
   color: #3D3D3D;
+}
+
+.mainProducts {
+  position: relative;
+  background: radial-gradient(53.65% 64.87% at 50% 35.13%, #F4F1EB 0%, #E8DFCD 100%);
+}
+.mainProducts .straw {
+  position: absolute;
+  top: 100px;
+  left: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+.mainProducts .butter {
+  pointer-events: none;
+  position: absolute;
+  top: 191px;
+  right: 0;
+  z-index: 1;
+}
+.mainProducts .productPage .title {
+  font-family: "PT Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 80px;
+  line-height: 100%;
+  text-align: center;
+  color: #3D3D3D;
+  margin: 59px 0;
+}
+.mainProducts .productPage .tabs {
+  max-width: 1053px;
+  width: 100%;
+  margin: 0 auto 90px;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+}
+.mainProducts .productPage .tabs .item {
+  border: 1px solid #898989;
+  box-sizing: border-box;
+  border-radius: 30px;
+  padding: 8.5px 15px;
+  margin-right: 15px;
+  font-family: "PT Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 100%;
+  color: #898989;
+  margin-bottom: 15px;
+  transition: all 0.4s;
+}
+.mainProducts .productPage .tabs .item a {
+  color: #898989;
+}
+.mainProducts .productPage .tabs .active {
+  background: #008425;
+  border-color: transparent;
+  color: #FFFFFF;
+}
+.mainProducts .productPage .tabs .active a {
+  color: #FFFFFF;
+}
+.mainProducts .productPage .mTabs {
+  display: none;
+}
+.mainProducts .productPage .content {
+  max-width: 1322px;
+  width: 100%;
+  margin: 0 auto;
+}
+.mainProducts .productPage .content .contentBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 57px;
+}
+.mainProducts .productPage .content .contentBlock .contentBlock__title {
+  font-family: "PT Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 92%;
+  color: #3D3D3D;
+  margin-bottom: 58px;
+  text-align: center;
+}
+.mainProducts .productPage .content .contentBlock .contentItems {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+}
+.mainProducts .productPage .content .contentBlock .contentItems .contentItem {
+  width: 312px;
+  height: 380px;
+  background: #F4F1EB;
+  border: 1px solid #EBE3D3;
+  box-sizing: border-box;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-right: 22px;
+  margin-bottom: 60px;
+  position: relative;
+  overflow: hidden;
+}
+.mainProducts .productPage .content .contentBlock .contentItems .contentItem:last-of-type {
+  margin-right: unset;
+}
+.mainProducts .productPage .content .contentBlock .contentItems .contentItem .productPic {
+  margin-bottom: 54px;
+}
+.mainProducts .productPage .content .contentBlock .contentItems .contentItem .tag {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.mainProducts .productPage .content .contentBlock .contentItems .contentItem .itemTitle {
+  font-family: "PT Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 120%;
+  color: #3D3D3D;
+  margin-bottom: 10px;
+}
+.mainProducts .productPage .content .contentBlock .contentItems .contentItem .volume {
+  font-family: "PT Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 120%;
+  color: #3D3D3D;
+}
+.mainProducts .productPage .mContent {
+  display: none;
 }
 
 footer {
@@ -1279,6 +1411,10 @@ footer .bottomContent .copyright a {
   }
 }
 @media (max-width: 1420px) {
+  header .headerMenu {
+    margin-right: 117px;
+  }
+
   .mainContacts nav {
     max-width: 600px;
   }
@@ -1310,6 +1446,12 @@ footer .bottomContent .copyright a {
   .mainWhere .where .content .item .label {
     width: 146px;
     height: 65px;
+  }
+
+  .mainProducts .productPage .tabs {
+    max-width: 600px;
+    position: relative;
+    z-index: 10;
   }
 }
 @media (max-width: 1300px) {
@@ -1377,6 +1519,11 @@ footer .bottomContent .copyright a {
   }
   footer .footerContent .bottomContent .copyright p, footer .footerContent .bottomContent .copyright a {
     font-size: 12px;
+  }
+}
+@media (max-width: 1200px) {
+  .mainProducts .straw, .mainProducts .butter {
+    display: none;
   }
 }
 @media (max-width: 900px) {
@@ -1496,7 +1643,7 @@ footer .bottomContent .copyright a {
     margin-bottom: 51px;
   }
   .mainWhere .where .content {
-    max-width: 375px;
+    max-width: 356px;
     margin-bottom: 121px;
   }
   .mainWhere .where .content .item {
@@ -1518,6 +1665,9 @@ footer .bottomContent .copyright a {
     max-width: 89px;
   }
 
+  main nav {
+    display: none;
+  }
   main .products .items {
     flex-direction: column;
     margin-bottom: -163px;
@@ -1914,6 +2064,115 @@ footer .bottomContent .copyright a {
   .mainContacts .contacts .content .info .socials .item a {
     font-size: 15px;
     line-height: 120%;
+  }
+
+  .mainProducts .productPage .title {
+    font-size: 36px;
+    line-height: 100%;
+    margin-top: 124px;
+    margin-bottom: 52px;
+  }
+  .mainProducts .productPage .content {
+    display: none;
+  }
+  .mainProducts .productPage .tabs {
+    display: none;
+  }
+  .mainProducts .productPage .mTabs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+  .mainProducts .productPage .mTabs select {
+    border: 1px solid #898989;
+    box-sizing: border-box;
+    border-radius: 30px;
+    background: transparent;
+    padding: 8px 0;
+    text-align: center;
+    font-family: "PT Sans";
+    width: 251px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 100%;
+    color: #898989;
+    outline: none;
+  }
+  .mainProducts .productPage .mTabs select:first-of-type {
+    margin-bottom: 10px;
+  }
+  .mainProducts .productPage .mContent {
+    max-width: 320px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+  .mainProducts .productPage .mContent .slider {
+    margin-bottom: 83px;
+    position: relative;
+  }
+  .mainProducts .productPage .mContent .slider .sliderTitle {
+    font-family: "PT Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 92%;
+    text-align: center;
+    margin-bottom: 24px;
+    color: #3D3D3D;
+  }
+  .mainProducts .productPage .mContent .slider .swiper-pagination {
+    bottom: -40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .mainProducts .productPage .mContent .slider .swiper-pagination-bullet {
+    background: #A7A7A7;
+    width: 4px;
+    height: 4px;
+    margin-right: 11px;
+    transition: all 0.4s;
+  }
+  .mainProducts .productPage .mContent .slider .swiper-pagination-bullet:last-of-type {
+    margin-right: unset;
+  }
+  .mainProducts .productPage .mContent .slider .swiper-pagination-bullet-active {
+    background: #004E16;
+    width: 8px;
+    height: 8px;
+  }
+  .mainProducts .productPage .mContent .slider .slideContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #F4F1EB;
+    border: 1px solid #EBE3D3;
+    box-sizing: border-box;
+    border-radius: 20px;
+    width: 320px;
+    padding: 37px 0 17px;
+  }
+  .mainProducts .productPage .mContent .slider .slideContent .name {
+    margin-top: 40px;
+    font-family: "PT Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 120%;
+    color: #3D3D3D;
+  }
+  .mainProducts .productPage .mContent .slider .slideContent .volume {
+    font-family: "PT Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 120%;
+    letter-spacing: -0.01em;
+    color: #3D3D3D;
   }
 }
 .more {

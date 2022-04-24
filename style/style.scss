@@ -38,14 +38,15 @@ header {
   transition: all 0.4s;
 
   &:hover {
-    background: #FFFFFF !important;
+    .headerWrapper{
+      background: #FFFFFF !important;
+    }
   }
 
   .headerWrapper {
     display: flex;
     align-items: center;
     position: relative;
-    z-index: 2;
   }
 
   .mWrapper {
@@ -61,7 +62,6 @@ header {
     display: flex;
     align-items: center;
     margin-right: 148px;
-
     .item {
       margin-right: 60px;
 
@@ -96,7 +96,7 @@ header {
       svg {
         margin-left: 11px;
         cursor: pointer;
-        transition: 0.4s;
+        transition: 0.8s;
       }
 
       .headerPopup {
@@ -107,8 +107,8 @@ header {
         height: 614px;
         background: #FFFFFF;
         transform: translateY(-200%);
-        transition: all 0.4s;
-        z-index: 1;
+        transition: all 0.8s;
+        z-index: -1;
 
         .content {
           display: flex;
@@ -125,11 +125,12 @@ header {
               height: 222px;
               display: flex;
               align-items: flex-end;
-              position: absolute;
-              top: -100px;
-              left: 50%;
-              transform: translateX(-50%);
-              transition: all 0.4s;
+              //position: absolute;
+              //top: -100px;
+              //left: 50%;
+              //transform: translateX(-50%);
+              transition: all 0.8s;
+              margin-bottom: 20px;
             }
 
             .itemTitle {
@@ -146,10 +147,10 @@ header {
               max-width: 162px;
               height: 36px;
               margin-bottom: 43px;
-              position: absolute;
-              top: -1000px;
-              left: 50%;
-              transform: translateX(-50%);
+              //position: absolute;
+              //top: -1000px;
+              //left: 50%;
+              //transform: translateX(-50%);
               transition: all 0.4s;
               margin-top: 10px;
             }
@@ -183,7 +184,7 @@ header {
         padding: 25px 30px;
         background: #FFFFFF;
         transition: all 0.4s;
-
+        z-index: -1;
         .itemAbout {
           margin-bottom: 30px;
 
@@ -199,7 +200,7 @@ header {
 
       &:hover {
         svg {
-          transform: rotateX(180deg);
+          transform: rotateZ(180deg);
         }
 
         .mainItem {
@@ -213,7 +214,7 @@ header {
     }
     .aboutActive{
       svg {
-        transform: rotateX(180deg);
+        transform: rotateZ(180deg);
       }
 
       a {
@@ -226,7 +227,7 @@ header {
     }
     .itemActive {
       svg {
-        transform: rotateX(180deg);
+        transform: rotateZ(180deg);
       }
 
       a {
@@ -1058,7 +1059,6 @@ main {
 .mainWhere{
   position: relative;
   background: radial-gradient(53.65% 64.87% at 50% 35.13%, #F4F1EB 0%, #E8DFCD 100%);
-  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.25);
   .box{
     position: absolute;
     top: 140px;
@@ -1123,7 +1123,6 @@ main {
 }
 .mainContacts{
   background: radial-gradient(53.65% 64.87% at 50% 35.13%, #F4F1EB 0%, #E8DFCD 100%);
-  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.25);
   .contacts {
     width: 100%;
     margin: 84px auto 0;
@@ -1238,6 +1237,148 @@ main {
           }
         }
       }
+    }
+  }
+}
+.mainProducts{
+  position: relative;
+  background: radial-gradient(53.65% 64.87% at 50% 35.13%, #F4F1EB 0%, #E8DFCD 100%);
+  .straw{
+    position: absolute;
+    top: 100px;
+    left: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .butter{
+    pointer-events: none;
+    position: absolute;
+    top: 191px;
+    right: 0;
+    z-index: 1;
+  }
+  .productPage{
+    .title{
+      font-family: 'PT Sans';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 80px;
+      line-height: 100%;
+      text-align: center;
+      color: #3D3D3D;
+      margin:59px 0;
+    }
+    .tabs{
+      max-width: 1053px;
+      width: 100%;
+      margin: 0 auto 90px;
+      display: flex;
+      flex-flow: row wrap;
+      align-items: center;
+      justify-content: center;
+      .item{
+        border: 1px solid #898989;
+        box-sizing: border-box;
+        border-radius: 30px;
+        padding: 8.5px 15px;
+        margin-right: 15px;
+        font-family: 'PT Sans';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 100%;
+        color: #898989;
+        a{
+          color: #898989;
+        }
+        margin-bottom: 15px;
+        transition: all 0.4s;
+      }
+      .active{
+        background: #008425;
+        border-color: transparent;
+        color: #FFFFFF;
+        a{
+          color: #FFFFFF;
+        }
+      }
+    }
+    .mTabs{
+      display: none;
+    }
+    .content{
+      max-width: 1322px;
+      width: 100%;
+      margin: 0 auto;
+      .contentBlock{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 57px;
+        .contentBlock__title{
+          font-family: 'PT Sans';
+          font-style: normal;
+          font-weight: 700;
+          font-size: 40px;
+          line-height: 92%;
+          color: #3D3D3D;
+          margin-bottom: 58px;
+          text-align: center;
+        }
+        .contentItems{
+          display: flex;
+          flex-flow: row wrap;
+          align-items: center;
+          justify-content: center;
+          .contentItem{
+            width: 312px;
+            height: 380px;
+            background: #F4F1EB;
+            border: 1px solid #EBE3D3;
+            box-sizing: border-box;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-right: 22px;
+            margin-bottom: 60px;
+            position: relative;
+            overflow:hidden;
+            &:last-of-type{
+              margin-right: unset;
+            }
+            .productPic{
+              margin-bottom: 54px;
+            }
+            .tag{
+              position: absolute;
+              top: 0;
+              left: 0;
+            }
+            .itemTitle{
+              font-family: 'PT Sans';
+              font-style: normal;
+              font-weight: 700;
+              font-size: 22px;
+              line-height: 120%;
+              color: #3D3D3D;
+              margin-bottom: 10px;
+            }
+            .volume{
+              font-family: 'PT Sans';
+              font-style: normal;
+              font-weight: 400;
+              font-size: 18px;
+              line-height: 120%;
+              color: #3D3D3D;
+            }
+          }
+        }
+      }
+    }
+    .mContent{
+      display: none;
     }
   }
 }
@@ -1488,6 +1629,11 @@ footer {
 }
 
 @media (max-width: 1420px){
+  header{
+    .headerMenu{
+      margin-right: 117px;
+    }
+  }
   .mainContacts{
     nav{
       max-width: 600px;
@@ -1522,6 +1668,15 @@ footer {
             height: 65px;
           }
         }
+      }
+    }
+  }
+  .mainProducts{
+    .productPage{
+      .tabs{
+        max-width: 600px;
+        position: relative;
+        z-index: 10;
       }
     }
   }
@@ -1639,6 +1794,14 @@ footer {
           }
         }
       }
+    }
+  }
+}
+
+@media(max-width: 1200px){
+  .mainProducts{
+    .straw,.butter{
+      display: none;
     }
   }
 }
@@ -1774,7 +1937,7 @@ footer {
         margin-bottom: 51px;
       }
       .content{
-        max-width: 375px;
+        max-width: 356px;
         margin-bottom: 121px;
         .item{
           padding: 20px 12.5px;
@@ -1798,6 +1961,9 @@ footer {
     }
   }
   main {
+    nav{
+      display: none;
+    }
     .products {
       .items {
         flex-direction: column;
@@ -2327,6 +2493,118 @@ footer {
             }
           }
 
+        }
+      }
+    }
+  }
+  .mainProducts{
+    .productPage{
+      .title{
+        font-size: 36px;
+        line-height: 100%;
+        margin-top: 124px;
+        margin-bottom: 52px;
+      }
+      .content{
+        display: none;
+      }
+      .tabs{
+        display: none;
+      }
+      .mTabs{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 40px;
+        select{
+          &:first-of-type{
+            margin-bottom: 10px;
+          }
+          border: 1px solid #898989;
+          box-sizing: border-box;
+          border-radius: 30px;
+          background: transparent;
+          padding: 8px 0;
+          text-align: center;
+          font-family: 'PT Sans';
+          width: 251px;
+          font-style: normal;
+          font-weight: 700;
+          font-size: 14px;
+          line-height: 100%;
+          color: #898989;
+          outline: none;
+        }
+      }
+      .mContent{
+        max-width: 320px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        .slider{
+          margin-bottom: 83px;
+          position: relative;
+          .sliderTitle{
+            font-family: 'PT Sans';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 24px;
+            line-height: 92%;
+            text-align: center;
+            margin-bottom: 24px;
+            color: #3D3D3D;
+          }
+          .swiper-pagination{
+            bottom: -40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          .swiper-pagination-bullet{
+            background: #A7A7A7;
+            width: 4px;
+            height: 4px;
+            margin-right: 11px;
+            transition: all 0.4s;
+            &:last-of-type{
+              margin-right: unset;
+            }
+          }
+          .swiper-pagination-bullet-active{
+            background: #004E16;
+            width: 8px;
+            height: 8px;
+          }
+          .slideContent{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #F4F1EB;
+            border: 1px solid #EBE3D3;
+            box-sizing: border-box;
+            border-radius: 20px;
+            width: 320px;
+            padding: 37px 0 17px;
+            .name{
+              margin-top: 40px;
+              font-family: 'PT Sans';
+              font-style: normal;
+              font-weight: 700;
+              font-size: 22px;
+              line-height: 120%;
+              color: #3D3D3D;
+            }
+            .volume{
+              font-family: 'PT Sans';
+              font-style: normal;
+              font-weight: 400;
+              font-size: 18px;
+              line-height: 120%;
+              letter-spacing: -0.01em;
+              color: #3D3D3D;
+            }
+          }
         }
       }
     }

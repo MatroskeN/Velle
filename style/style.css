@@ -1185,6 +1185,9 @@ main .wrapper .news .socials button:first-child {
   position: relative;
   overflow: hidden;
 }
+.mainProducts .productPage .content .contentBlock .contentItems .contentItem img {
+  max-height: 173px;
+}
 .mainProducts .productPage .content .contentBlock .contentItems .contentItem:last-of-type {
   margin-right: unset;
 }
@@ -2144,6 +2147,10 @@ footer .bottomContent .copyright a {
     width: 8px;
     height: 8px;
   }
+  .mainProducts .productPage .mContent .slider .swiper-slide {
+    overflow: hidden;
+    border-radius: 20px;
+  }
   .mainProducts .productPage .mContent .slider .slideContent {
     display: flex;
     flex-direction: column;
@@ -2155,6 +2162,15 @@ footer .bottomContent .copyright a {
     border-radius: 20px;
     width: 320px;
     padding: 37px 0 17px;
+    overflow: hidden;
+  }
+  .mainProducts .productPage .mContent .slider .slideContent img {
+    max-height: 167px;
+  }
+  .mainProducts .productPage .mContent .slider .slideContent .tag {
+    position: absolute;
+    top: 0;
+    left: 0;
   }
   .mainProducts .productPage .mContent .slider .slideContent .name {
     margin-top: 40px;

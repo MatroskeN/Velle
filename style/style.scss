@@ -1345,6 +1345,9 @@ main {
             margin-bottom: 60px;
             position: relative;
             overflow:hidden;
+            img{
+              max-height: 173px;
+            }
             &:last-of-type{
               margin-right: unset;
             }
@@ -2575,6 +2578,10 @@ footer {
             width: 8px;
             height: 8px;
           }
+          .swiper-slide{
+            overflow: hidden;
+            border-radius: 20px;
+          }
           .slideContent{
             display: flex;
             flex-direction: column;
@@ -2586,6 +2593,15 @@ footer {
             border-radius: 20px;
             width: 320px;
             padding: 37px 0 17px;
+            overflow: hidden;
+            img{
+              max-height: 167px;
+            }
+            .tag{
+              position: absolute;
+              top: 0;
+              left: 0;
+            }
             .name{
               margin-top: 40px;
               font-family: 'PT Sans';

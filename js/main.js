@@ -1,6 +1,14 @@
+window.onload = function() {
+    // short timeout
+    setTimeout(function() {
+        window.scrollTo(0,window.scrollY-300);
+        console.log('scroll');
+    }, 100);
+};
+
 //carousel
 
-const swiper = new Swiper('.swiper', {
+const swiper = new Swiper('.mainSlider', {
     // Optional parameters
     direction: 'horizontal',
     loop: true,
@@ -96,6 +104,58 @@ const dessert = new Swiper('.dessert', {
     },
 });
 
+const cardSlider = new Swiper('.cardSlider', {
+    // Optional parameters
+    direction: 'horizontal',
+    loop: false,
+
+    // If we need pagination
+    pagination: {
+        el: '.main-pagination',
+        clickable: true,
+    },
+
+    // Navigation arrows
+    navigation: {
+        nextEl: '.next-arrow',
+        prevEl: '.prev-arrow',
+    }
+});
+const recipesSlider = new Swiper('.recipesSlider',{
+    direction: 'horizontal',
+    loop: true,
+    slidesPerView: 1,
+    centeredSlides: false,
+
+    navigation: {
+        nextEl: '.next-recipe',
+        prevEl: '.prev-recipe',
+    },
+    // Responsive breakpoints
+    breakpoints: {
+        768: {
+            slidesPerView: 4,
+            centeredSlides: true,
+        }
+    }
+})
+const otherSLider = new Swiper('.otherSlider',{
+    direction: 'horizontal',
+    loop: true,
+    slidesPerView: 1,
+    spaceBetween: 21,
+    pagination: {
+        el: '.other-pagination',
+        clickable: true,
+    },
+    // Responsive breakpoints
+    breakpoints: {
+        768: {
+            slidesPerView: 4,
+            spaceBetween: 0
+        }
+    }
+})
 
 let scroll = 0;
 $(window).on("scroll", function () {
@@ -133,33 +193,7 @@ window.addEventListener('mousemove', function (e) {
 
 let count = -1;
 let count1 = -1;
-// $(".popupMenu").mouseover(function (){
-//     if ($('.itemPassive').hasClass('itemActive')){
-//         $('.itemPassive').removeClass('itemActive')
-//         $(".headerWrapper").css("background", "transparent")
-//     } else {
-//         $('.itemPassive').addClass('itemActive')
-//         $(".headerWrapper").css("background", "#FFFFFF")
-//         if($('.aboutPassive').hasClass('aboutActive')){
-//             $('.aboutPassive').removeClass('aboutActive')
-//             $('.aboutPopup').addClass('closedAbout')
-//         }
-//     }
-// })
-// $(".aboutMenu").mouseover(function (){
-//     if ($('.aboutPassive').hasClass('aboutActive')){
-//         $('.aboutPassive').removeClass('aboutActive')
-//         $('.aboutPopup').addClass('closedAbout')
-//         $(".headerWrapper").css("background", "transparent")
-//     } else {
-//         $('.aboutPassive').addClass('aboutActive')
-//         $('.aboutPopup').removeClass('closedAbout')
-//         $(".headerWrapper").css("background", "#FFFFFF")
-//         if($('.itemPassive').hasClass('itemActive')){
-//             $('.itemPassive').removeClass('itemActive')
-//         }
-//     }
-// })
+
 $(".popupMenu").mouseover(function () {
     $('.itemPassive').addClass('itemActive')
     $(".headerWrapper").css("background", "#FFFFFF")
@@ -247,21 +281,57 @@ $(".mobAboutProducts").on("click", function () {
 //filter
 
 $(".lineage").on("click", function () {
-    $(".lineage").removeClass('active');
+    if ($(this).hasClass('active')){
+        clearFilter();
+    } else {
+        $(".item").removeClass('active');
     $(".all-items").removeClass('active');
     $(this).addClass('active');
     let data = this.getAttribute('data-attribute');
+    $(".contentItem").show();
     $(".contentBlock").hide();
     $("." + data).show();
+    }
 })
 
 $(".flavour").on("click", function () {
-    $(".flavour").removeClass('active');
-    $(this).addClass('active');
-    let data = this.getAttribute('data-attribute');
-    $(".contentItem").hide();
-    $("." + data).show();
+    if ($(this).hasClass('active')){
+        clearFilter();
+    } else {
+        $(".item").removeClass('active');
+        $(this).addClass('active');
+        let data = this.getAttribute('data-attribute');
+        $(".contentBlock").show();
+        $(".contentItem").hide();
+        $("." + data).show();
+        hideShit(data);
+    }
 })
+
+function hideShit(data){
+    let arr = document.querySelectorAll(".contentBlock");
+    let count = 0;
+    for (let i = 0; i < arr.length; i++){
+        for(let j = 0; j < arr[i].children[1].children.length; j++){
+            if (arr[i].children[1].children[j].classList[1] === data){
+                count++;
+            }
+        }
+        if (count === 0){
+            arr[i].style.display = "none"
+        }
+        else {
+            count = 0;
+        }
+    }
+}
+
+function clearFilter(){
+    $(".item").removeClass('active');
+    $(".all-items").addClass('active');
+    $(".contentBlock").show();
+    $(".contentItem").show();
+}
 
 $(".all-items").on("click", function () {
     $(".item").removeClass('active');
@@ -275,19 +345,50 @@ $('#line').change(function () {
     let data = $(this).val();
     $(".slider").hide();
     $("." + data).show();
+    clearFlavour();
     if (data == 'all-items') {
         $(".slider").show();
     }
 })
 $('#flavour').change(function () {
     let data = $(this).val();
+    $(".slider").show();
     $(".swiper-slide").hide();
     $("." + data).show();
+    clearLine();
     if (data == 'all-flavours') {
         $(".swiper-slide").show();
     }
 })
 
+function clearLine(){
+    $("#line option").prop('selected', function() {
+        return this.defaultSelected;
+    });
+}
 
+function clearFlavour(){
+    $("#flavour option").prop('selected', function() {
+        return this.defaultSelected;
+    });
+}
 
+function swipeSlide(){
+    let anchor = String(document.location.href).split('?');
+    let index = anchor[1];
+    if (anchor[1]){
+        console.log(anchor[1]);
+        cardSlider.slideTo(index, 1000, false)
+    }
+}
+swipeSlide();
 
+let clickFilter = () => {
+    let data = String(document.location.href).split('#');
+    if (data[1]){
+        console.log(data[1])
+        $("."+data[1]).click();
+    }
+}
+
+clickFilter();
